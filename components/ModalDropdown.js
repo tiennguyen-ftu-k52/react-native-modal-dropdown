@@ -88,7 +88,7 @@ export default class ModalDropdown extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     let {buttonText, selectedIndex} = this.state;
     const {defaultIndex, defaultValue, options} = nextProps;
     buttonText = this._nextValue == null ? buttonText : this._nextValue;
@@ -102,11 +102,11 @@ export default class ModalDropdown extends Component {
     this._nextValue = null;
     this._nextIndex = null;
 
-    this.setState({
+    return {
       loading: !options,
       buttonText,
       selectedIndex
-    });
+    };
   }
 
   render() {
